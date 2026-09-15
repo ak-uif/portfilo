@@ -1,0 +1,174 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+    scroll-behavior: smooth; /* Səhifədə yumşaq sürüşmə üçün */
+}
+
+body {
+    background-color: #0d0d0d;
+    color: #ffffff;
+    line-height: 1.6;
+}
+
+/* --- Menyu (Navbar) --- */
+header {
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px 50px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    background: rgba(13, 13, 13, 0.85);
+    backdrop-filter: blur(10px);
+    z-index: 100;
+}
+
+nav a {
+    color: #b3b3b3;
+    text-decoration: none;
+    margin-left: 30px;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+nav a:hover, nav a.active {
+    color: #e50914; /* Qırmızı vurğu rəngi */
+}
+
+/* --- Ümumi Seksiyalar --- */
+section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 80px 20px 20px; /* Header-in altda qalmaması üçün */
+    text-align: center;
+    border-bottom: 1px solid #1f1f1f;
+}
+
+h1 {
+    font-size: 4rem;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+span.highlight, h1 span {
+    color: #e50914;
+}
+
+p {
+    color: #a0a0a0;
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin-bottom: 30px;
+}
+
+/* --- Düymələr --- */
+.btn {
+    display: inline-block;
+    padding: 12px 28px;
+    border: 2px solid #e50914;
+    color: #ffffff;
+    background: transparent;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
+}
+
+.btn:hover {
+    background-color: #e50914;
+    color: #fff;
+}
+
+/* --- Bacarıqlar (Skills) --- */
+.skills {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.skills span {
+    background-color: #1a1a1a;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    border: 1px solid #333;
+}
+
+/* --- Layihə Kartları --- */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    width: 100%;
+    max-width: 1000px;
+}
+
+.project-card {
+    background-color: #141414;
+    padding: 30px;
+    border-radius: 8px;
+    border: 1px solid #262626;
+    text-align: left;
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    border-color: #e50914;
+}
+
+.project-card h3 {
+    margin-bottom: 10px;
+}
+
+.card-links {
+    margin-top: 20px;
+    display: flex;
+    gap: 15px;
+}
+
+.card-links a {
+    color: #e50914;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.card-links a:hover {
+    text-decoration: underline;
+}
+
+/* --- Əlaqə Formu --- */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 400px;
+    gap: 15px;
+}
+
+.contact-form input, .contact-form textarea {
+    width: 100%;
+    padding: 15px;
+    background-color: #1a1a1a;
+    border: 1px solid #333;
+    color: #fff;
+    border-radius: 5px;
+    outline: none;
+}
+
+.contact-form input:focus, .contact-form textarea:focus {
+    border-color: #e50914;
+}

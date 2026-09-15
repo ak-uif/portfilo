@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akif Kərimov - Portfolio</title>
+    <!-- CSS faylını bura bağlayırıq -->
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="#home" class="nav-link active">Home</a>
+            <a href="#about" class="nav-link">About</a>
+            <a href="#projects" class="nav-link">Projects</a>
+            <a href="#contact" class="nav-link">Contact</a>
+        </nav>
+    </header>
+
+    <section id="home">
+        <h1>Hello, I'm <span>Akif</span>.</h1>
+        <p>I'm an Information Technology student and full stack web developer.</p>
+        <a href="#projects" class="btn">View my work ↓</a>
+    </section>
+
+    <section id="about">
+        <h2>About <span class="highlight">Me</span></h2>
+        <p>I have a deep passion for web development, cybersecurity, and creating interactive projects. Always learning and exploring new technologies.</p>
+        <div class="skills">
+            <span>HTML/CSS</span>
+            <span>JavaScript</span>
+            <span>Python</span>
+            <span>C++</span>
+            <span>Git/GitHub</span>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2>My <span class="highlight">Projects</span></h2>
+        <div class="project-grid">
+            <!-- Layihə Kartı 1 -->
+            <div class="project-card">
+                <h3>NetGhost</h3>
+                <p>GameTech hackathon project.</p>
+                <div class="card-links">
+                    <a href="#">Live App</a>
+                    <a href="#">GitHub</a>
+                </div>
+            </div>
+            <!-- Layihə Kartı 2 -->
+            <div class="project-card">
+                <h3>AgroQR</h3>
+                <p>Agritourism platform developed for Farm2Tour hackathon.</p>
+                <div class="card-links">
+                    <a href="#">Live App</a>
+                    <a href="#">GitHub</a>
+                </div>
+            </div>
+            <!-- Layihə Kartı 3 -->
+            <div class="project-card">
+                <h3>Student Study Portal</h3>
+                <p>A prototype study portal website designed for university students.</p>
+                <div class="card-links">
+                    <a href="#">Live App</a>
+                    <a href="#">GitHub</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Contact <span class="highlight">Me</span></h2>
+        <p>Have a question or want to work together?</p>
+        <form class="contact-form">
+            <input type="text" placeholder="Name" required>
+            <input type="email" placeholder="Email" required>
+            <textarea rows="5" placeholder="Message" required></textarea>
+            <button type="submit" class="btn">Submit</button>
+        </form>
+    </section>
+
+    <!-- JS faylını bura bağlayırıq -->
+    <script src="script.js"></script>
+</body>
+</html>
