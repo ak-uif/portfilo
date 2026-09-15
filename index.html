@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <canvas id="bg-canvas"></canvas>
 
     <header>
         <nav>
@@ -27,13 +28,73 @@
 
     <section id="about">
         <h2>About <span class="highlight">Me</span></h2>
-        <p>I have a deep passion for web development, cybersecurity, and creating interactive projects. Always learning and exploring new technologies.</p>
-        <div class="skills">
-            <span>HTML/CSS</span>
-            <span>JavaScript</span>
-            <span>Python</span>
-            <span>C++</span>
-            <span>Git/GitHub</span>
+        <div class="profile-row">
+            <div class="profile-image">
+                <img src="https://via.placeholder.com/160" alt="Profile photo placeholder">
+            </div>
+            <div class="bio-container">
+                <p>Motivated Information Technology student with hands-on experience in full-stack web development, AWS cloud concepts, and cybersecurity fundamentals. Proven track record in community management, digital PR for innovation incubators, and active hackathon participation. Strong problem-solver adept at building software projects, leading tech initiatives, and rapidly mastering new frameworks.</p>
+            </div>
+        </div>
+
+        <div class="about-content">
+            <div class="about-column">
+                <div class="about-subsection">
+                    <h3>Skills &amp; <span class="highlight">Tech Stack</span></h3>
+                    <div class="skills" aria-label="Technical skills">
+                        <div class="skill-card"><span class="skill-icon">5</span><span>HTML5</span></div>
+                        <div class="skill-card"><span class="skill-icon">#</span><span>CSS3</span></div>
+                        <div class="skill-card"><span class="skill-icon">JS</span><span>JavaScript</span></div>
+                        <div class="skill-card"><span class="skill-icon">R</span><span>React.js</span></div>
+                        <div class="skill-card"><span class="skill-icon">N</span><span>Node.js</span></div>
+                        <div class="skill-card"><span class="skill-icon">Git</span><span>Git/GitHub</span></div>
+                        <div class="skill-card"><span class="skill-icon">Py</span><span>Python</span></div>
+                        <div class="skill-card"><span class="skill-icon">C++</span><span>C++</span></div>
+                        <div class="skill-card"><span class="skill-icon">AWS</span><span>AWS Cloud</span></div>
+                    </div>
+                </div>
+
+                <div class="about-subsection list-section">
+                    <h3>Soft <span class="highlight">Skills</span></h3>
+                    <ul>
+                        <li>Adaptability</li>
+                        <li>Problem-Solving</li>
+                        <li>Time Management</li>
+                        <li>Networking</li>
+                    </ul>
+                </div>
+
+                <div class="about-subsection list-section">
+                    <h3><span class="highlight">Languages</span></h3>
+                    <ul>
+                        <li>Azerbaijani - Native</li>
+                        <li>English - B1</li>
+                        <li>Turkish - C1</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="about-column">
+                <div class="info-card">
+                    <h3>Education</h3>
+                    <p><strong>AzUAC</strong><br>Information Technology, 2025-2029</p>
+                    <p><strong>DIV Academy</strong><br>Full-Stack, 2026-2027</p>
+                </div>
+
+                <div class="info-card">
+                    <h3>Key Roles</h3>
+                    <p>Community Manager at AzUAC AWS Student Builder Group</p>
+                    <p>PR &amp; Media Specialist at AzUAC Innovation Center</p>
+                    <p>Freelance Full-Stack Developer</p>
+                </div>
+
+                <div class="info-card">
+                    <h3>Certificates</h3>
+                    <p>Huawei ICT Academy (Python &amp; Cloud)</p>
+                    <p>IBM (Generative AI)</p>
+                    <p>Coursera</p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -42,29 +103,41 @@
         <div class="project-grid">
             <!-- Layihə Kartı 1 -->
             <div class="project-card">
-                <h3>NetGhost</h3>
-                <p>GameTech hackathon project.</p>
-                <div class="card-links">
-                    <a href="#">Live App</a>
-                    <a href="#">GitHub</a>
+                <div class="project-media">
+                    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Server technology representing the NetGhost project">
+                    <div class="project-overlay">
+                        <a href="#" class="project-icon-button" aria-label="Open NetGhost Live App" title="Live App">↗</a>
+                        <a href="#" class="project-icon-button" aria-label="Open NetGhost GitHub" title="GitHub">GH</a>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3>NetGhost</h3>
+                    <p>GameTech hackathon project.</p>
                 </div>
             </div>
             <!-- Layihə Kartı 2 -->
             <div class="project-card">
-                <h3>AgroQR</h3>
-                <p>Agritourism platform developed for Farm2Tour hackathon.</p>
-                <div class="card-links">
-                    <a href="#">Live App</a>
-                    <a href="#">GitHub</a>
+                <div class="project-media">
+                    <img src="https://images.unsplash.com/photo-1492496913980-501348b61469?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Green agricultural field representing the AgroQR project">
+                    <div class="project-overlay">
+                        <a href="#" class="project-icon-button" aria-label="Open AgroQR Live App" title="Live App">↗</a>
+                        <a href="#" class="project-icon-button" aria-label="Open AgroQR GitHub" title="GitHub">GH</a>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3>AgroQR</h3>
+                    <p>Agritourism platform developed for Farm2Tour hackathon.</p>
                 </div>
             </div>
             <!-- Layihə Kartı 3 -->
-            <div class="project-card">
-                <h3>Student Study Portal</h3>
-                <p>A prototype study portal website designed for university students.</p>
-                <div class="card-links">
-                    <a href="#">Live App</a>
-                    <a href="#">GitHub</a>
+            <div class="project-card coming-soon-card">
+                <div class="project-media">
+                    <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Decorated cake representing the CakeHouse Site">
+                </div>
+                <div class="project-info">
+                    <h3>CakeHouse Site</h3>
+                    <p>A warm and welcoming bakery website currently in development.</p>
+                    <span class="project-badge">Coming Soon</span>
                 </div>
             </div>
         </div>
