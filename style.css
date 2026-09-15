@@ -114,26 +114,28 @@ p {
 
 .about-content {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    gap: clamp(2rem, 5vw, 4rem);
     align-items: center;
-    width: 100%;
-    max-width: 1100px;
+    width: min(95%, 78rem);
     margin: 0 auto;
+    padding-inline: clamp(1rem, 3vw, 2rem);
     text-align: left;
 }
 
 .about-profile {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
+    gap: clamp(1.25rem, 3vw, 2rem);
 }
 
 .profile-image {
-    width: 150px;
-    height: 150px;
-    margin-bottom: 20px;
-    border: 3px solid #e50914;
+    width: clamp(9rem, 16vw, 11rem);
+    height: clamp(9rem, 16vw, 11rem);
+    flex-shrink: 0;
+    margin-bottom: 0;
+    border: 0.1875rem solid #e50914;
     border-radius: 50%;
     overflow: hidden;
     box-shadow: 0 0 18px rgba(229, 9, 20, 0.2);
@@ -147,8 +149,9 @@ p {
 }
 
 .bio-container {
-    width: 100%;
-    padding: 24px 28px;
+    flex: 1;
+    min-width: 0;
+    padding: clamp(1rem, 2.5vw, 1.75rem);
     background-color: rgba(20, 20, 20, 0.9);
     border-left: 3px solid #e50914;
 }
@@ -156,13 +159,17 @@ p {
 .bio-container p {
     max-width: none;
     margin: 0;
-    font-size: 1rem;
+    color: #d1d1d1;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    font-weight: 400;
 }
 
 .skills {
     display: grid;
-    grid-template-columns: repeat(3, minmax(90px, 1fr));
-    gap: 16px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(1.25rem, 3vw, 2rem);
+    justify-items: center;
 }
 
 .skill-card {
@@ -187,30 +194,38 @@ p {
     border-color: #e50914;
 }
 
-.skill-icon {
-    font-size: 2rem;
+.skill-card i {
+    font-size: 3rem;
     color: #ffffff;
     transition: color 0.3s ease;
+}
+
+.skill-card span {
+    font-size: 0.8rem;
 }
 
 .skill-card:hover i {
     color: #e50914;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 56.25em) {
     .about-content {
         grid-template-columns: 1fr;
-        max-width: 700px;
+        width: min(95%, 44rem);
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 37.5em) {
+    .about-profile {
+        flex-direction: column;
+    }
+
     .bio-container {
-        padding: 20px;
+        padding: 1rem;
     }
 
     .skills {
-        gap: 12px;
+        gap: 1rem;
     }
 }
 
