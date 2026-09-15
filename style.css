@@ -102,12 +102,9 @@ p {
     color: #fff;
 }
 
-/* --- About / CV --- */
+/* --- About --- */
 #about {
-    align-items: stretch;
-    padding-right: 5vw;
-    padding-left: 5vw;
-    text-align: left;
+    text-align: center;
 }
 
 #about h2 {
@@ -115,22 +112,30 @@ p {
     text-align: center;
 }
 
-.profile-row {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 40px;
+    align-items: center;
     width: 100%;
-    margin-bottom: 50px;
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.about-profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .profile-image {
-    flex: 0 0 160px;
-    width: 160px;
-    height: 160px;
-    overflow: hidden;
+    width: 150px;
+    height: 150px;
+    margin-bottom: 20px;
     border: 3px solid #e50914;
     border-radius: 50%;
+    overflow: hidden;
     box-shadow: 0 0 18px rgba(229, 9, 20, 0.2);
 }
 
@@ -142,7 +147,7 @@ p {
 }
 
 .bio-container {
-    width: min(760px, 100%);
+    width: 100%;
     padding: 24px 28px;
     background-color: rgba(20, 20, 20, 0.9);
     border-left: 3px solid #e50914;
@@ -154,114 +159,58 @@ p {
     font-size: 1rem;
 }
 
-.about-content {
-    display: grid;
-    grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
-    gap: 50px;
-    width: 100%;
-}
-
-.about-column {
-    display: flex;
-    flex-direction: column;
-    gap: 28px;
-}
-
-.about-subsection h3,
-.info-card h3 {
-    margin-bottom: 18px;
-    font-size: 1.25rem;
-}
-
 .skills {
     display: grid;
-    grid-template-columns: repeat(3, minmax(120px, 1fr));
-    gap: 14px;
+    grid-template-columns: repeat(3, minmax(90px, 1fr));
+    gap: 16px;
 }
 
 .skill-card {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 10px;
-    min-height: 64px;
+    justify-content: center;
+    gap: 8px;
+    aspect-ratio: 1 / 1;
     padding: 12px;
     background-color: #141414;
-    border: 1px solid #e50914;
-    border-radius: 4px;
+    border: 1px solid #262626;
+    border-radius: 8px;
     font-size: 0.85rem;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 .skill-card:hover {
-    transform: translateY(-5px) scale(1.05);
-    box-shadow: 0 0 15px rgba(229, 9, 20, 0.5);
+    transform: scale(1.08);
+    box-shadow: 0 0 15px rgba(229, 9, 20, 0.6);
+    border-color: #e50914;
 }
 
 .skill-icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 30px;
-    height: 30px;
-    color: #e50914;
-    border: 1px solid #e50914;
-    border-radius: 4px;
-    font-size: 0.7rem;
-    font-weight: 700;
-}
-
-.list-section ul {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 10px 24px;
-    padding-left: 20px;
-    color: #a0a0a0;
-}
-
-.info-card {
-    padding: 24px;
-    background-color: #141414;
-    border: 1px solid #e50914;
-    border-radius: 6px;
-}
-
-.info-card p {
-    max-width: none;
-    margin-bottom: 14px;
-    font-size: 0.95rem;
-}
-
-.info-card p:last-child {
-    margin-bottom: 0;
-}
-
-.info-card strong {
+    font-size: 2rem;
     color: #ffffff;
+    transition: color 0.3s ease;
+}
+
+.skill-card:hover i {
+    color: #e50914;
 }
 
 @media (max-width: 900px) {
     .about-content {
         grid-template-columns: 1fr;
+        max-width: 700px;
     }
 }
 
 @media (max-width: 600px) {
-    .profile-row {
-        flex-direction: column;
-        gap: 25px;
-        margin-bottom: 35px;
-    }
-
     .bio-container {
         padding: 20px;
     }
 
     .skills {
-        grid-template-columns: repeat(2, minmax(110px, 1fr));
-    }
-
-    .list-section ul {
-        grid-template-columns: 1fr;
+        gap: 12px;
     }
 }
 
@@ -378,11 +327,72 @@ p {
 }
 
 /* --- Əlaqə Formu --- */
+.contact-content {
+    display: grid;
+    grid-template-columns: minmax(240px, 0.8fr) minmax(300px, 1fr);
+    align-items: start;
+    gap: 60px;
+    width: 100%;
+    max-width: 900px;
+    text-align: left;
+}
+
+.contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px;
+    color: #ffffff;
+    background-color: #141414;
+    border: 1px solid #262626;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: border-color 0.25s ease, transform 0.25s ease;
+}
+
+.contact-item:hover {
+    border-color: #e50914;
+    transform: translateX(4px);
+}
+
+.contact-item strong,
+.contact-item small {
+    display: block;
+}
+
+.contact-item strong {
+    margin-bottom: 2px;
+}
+
+.contact-item small {
+    color: #a0a0a0;
+    font-size: 0.8rem;
+}
+
+.contact-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 36px;
+    width: 36px;
+    height: 36px;
+    color: #e50914;
+    border: 1px solid #e50914;
+    border-radius: 50%;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
 .contact-form {
     display: flex;
     flex-direction: column;
     width: 100%;
-    max-width: 400px;
     gap: 15px;
 }
 
@@ -394,8 +404,33 @@ p {
     color: #fff;
     border-radius: 5px;
     outline: none;
+    font: inherit;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .contact-form input:focus, .contact-form textarea:focus {
     border-color: #e50914;
+    box-shadow: 0 0 0 2px rgba(229, 9, 20, 0.15);
+}
+
+.contact-form textarea {
+    resize: none;
+}
+
+.contact-form .btn {
+    width: 100%;
+    background-color: #141414;
+}
+
+.contact-form .btn:hover,
+.contact-form .btn:focus-visible {
+    background-color: #e50914;
+    border-color: #e50914;
+}
+
+@media (max-width: 700px) {
+    .contact-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
 }
