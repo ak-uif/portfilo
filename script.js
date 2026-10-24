@@ -118,7 +118,7 @@ function createParticle() {
     y: Math.random() * canvasHeight,
     vx: (Math.random() - .5) * .32,
     vy: (Math.random() - .5) * .32,
-    radius: Math.random() * 1.1 + .55
+    radius: Math.random() * 1.25 + .75
   };
 }
 
@@ -131,7 +131,7 @@ function resizeNetwork() {
   canvas.style.width = `${canvasWidth}px`;
   canvas.style.height = `${canvasHeight}px`;
   context.setTransform(dpr, 0, 0, dpr, 0, 0);
-  const count = Math.min(145, Math.max(62, Math.floor(canvasWidth * canvasHeight / 11500)));
+  const count = Math.min(215, Math.max(82, Math.floor(canvasWidth * canvasHeight / 8300)));
   particles = Array.from({ length: count }, createParticle);
 }
 
@@ -168,7 +168,7 @@ function drawNetwork() {
 
     context.beginPath();
     context.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
-    context.fillStyle = 'rgba(222, 228, 214, .46)';
+    context.fillStyle = 'rgba(225, 233, 216, .72)';
     context.fill();
   });
 
@@ -177,12 +177,12 @@ function drawNetwork() {
       const dx = particles[i].x - particles[j].x;
       const dy = particles[i].y - particles[j].y;
       const distance = Math.hypot(dx, dy);
-      if (distance < 118) {
+      if (distance < 142) {
         context.beginPath();
         context.moveTo(particles[i].x, particles[i].y);
         context.lineTo(particles[j].x, particles[j].y);
-        context.strokeStyle = `rgba(202, 213, 194, ${(1 - distance / 118) * .15})`;
-        context.lineWidth = .65;
+        context.strokeStyle = `rgba(201, 218, 193, ${(1 - distance / 142) * .29})`;
+        context.lineWidth = .8;
         context.stroke();
       }
     }
