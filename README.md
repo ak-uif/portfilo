@@ -12,11 +12,12 @@ Akif Kərimovun rəqəmsal məhsul və veb layihələrini təqdim edən şəxsi 
 
 ## Xüsusiyyətlər
 
-- İnteraktiv hissəcik fonu və cursor glow
-- 3D tilt effektli layihə kartları
-- Layihə filtrləri və detallı modal pəncərələr
+- Mouse hərəkətinə reaksiya verən yumşaq parallax fon
+- Glassmorphism səthlər və cursor/tap mikroanimasiyaları
+- Canlı layihələrdən götürülmüş real ekran görüntüləri
+- Birbaşa layihə saytlarına aparan 3D tilt kartları
 - Mobil, planşet və desktop üçün responsive dizayn
-- Framework və build addımı tələb etməyən tək-səhifəli struktur
+- Framework və build addımı tələb etməyən statik struktur
 
 ## Lokal baxış
 

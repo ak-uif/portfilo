@@ -3,166 +3,108 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#070812" />
-  <meta name="description" content="Akif Kərimov — rəqəmsal məhsullar, platformalar və interaktiv veb təcrübələri." />
-  <title>Akif Kərimov — Digital maker</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap');
-
-    :root { --bg:#070812; --surface:rgba(17,19,34,.78); --surface-strong:#111322; --line:rgba(255,255,255,.11); --text:#f7f5ef; --muted:#a4a7b8; --lime:#c6ff3f; --cyan:#79eeff; --violet:#9672ff; --coral:#ff9775; --shadow:0 24px 80px rgba(0,0,0,.35); }
-    * { box-sizing:border-box; }
-    html { scroll-behavior:smooth; }
-    body { margin:0; color:var(--text); background:var(--bg); font-family:'Manrope',system-ui,sans-serif; overflow-x:hidden; }
-    body::before { content:""; position:fixed; inset:0; pointer-events:none; z-index:-1; background:radial-gradient(circle at var(--mx,50%) var(--my,20%),rgba(150,114,255,.13),transparent 28rem),radial-gradient(circle at 80% 12%,rgba(121,238,255,.08),transparent 24rem); }
-    a { color:inherit; text-decoration:none; }
-    button { font:inherit; }
-    #space { position:fixed; inset:0; width:100%; height:100%; z-index:-3; opacity:.78; }
-    .noise { position:fixed; inset:0; z-index:10; pointer-events:none; opacity:.045; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.86' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.46'/%3E%3C/svg%3E"); }
-    .wrap { width:min(1180px,calc(100% - 44px)); margin:auto; }
-    .eyebrow { display:flex; align-items:center; gap:10px; color:var(--lime); font:500 11px 'DM Mono',monospace; letter-spacing:.16em; text-transform:uppercase; }
-    .eyebrow::before { content:""; width:28px; height:1px; background:currentColor; }
-    .site-header { position:fixed; top:0; left:0; right:0; z-index:20; border-bottom:1px solid transparent; transition:.3s ease; }
-    .site-header.scrolled { background:rgba(7,8,18,.72); border-color:var(--line); backdrop-filter:blur(18px); }
-    .nav { height:76px; display:flex; align-items:center; justify-content:space-between; }
-    .brand { display:flex; align-items:center; gap:12px; font-weight:800; letter-spacing:-.06em; }
-    .brand-mark { display:grid; place-items:center; width:30px; height:30px; border:1px solid var(--lime); color:var(--lime); border-radius:50%; font:500 12px 'DM Mono',monospace; }
-    .nav-links { display:flex; gap:28px; color:var(--muted); font-size:13px; }
-    .nav-links a { transition:color .2s; }
-    .nav-links a:hover { color:var(--text); }
-    .nav-cta, .button { display:inline-flex; align-items:center; justify-content:center; gap:10px; border-radius:999px; padding:13px 18px; font-size:12px; font-weight:700; transition:transform .25s,background .25s,color .25s,border-color .25s; }
-    .nav-cta { color:var(--bg); background:var(--lime); }
-    .button:hover, .nav-cta:hover { transform:translateY(-3px); }
-    .button-dark { border:1px solid var(--line); color:var(--text); background:rgba(255,255,255,.04); }
-    .button-dark:hover { background:rgba(255,255,255,.1); }
-    .button-lime { background:var(--lime); color:var(--bg); }
-    .hero { min-height:820px; display:grid; align-items:center; padding:146px 0 90px; position:relative; }
-    .hero::after { content:""; position:absolute; left:50%; bottom:0; width:min(1180px,calc(100% - 44px)); height:1px; background:linear-gradient(90deg,transparent,var(--line),transparent); }
-    .hero-grid { display:grid; grid-template-columns:1.08fr .92fr; gap:70px; align-items:center; }
-    h1,h2,h3,p { margin:0; }
-    h1 { max-width:820px; margin-top:25px; font-size:clamp(4.1rem,8.2vw,8.5rem); line-height:.88; letter-spacing:-.095em; font-weight:800; }
-    h1 em { color:var(--lime); font-style:normal; }
-    .hero-copy { max-width:525px; margin-top:33px; color:var(--muted); font-size:17px; line-height:1.7; }
-    .hero-actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:35px; }
-    .hero-side { position:relative; min-height:380px; }
-    .orbit { position:absolute; inset:5% 6%; border:1px solid rgba(198,255,63,.24); border-radius:50%; transform:rotate(-18deg); }
-    .orbit::before, .orbit::after { content:""; position:absolute; border:1px solid rgba(121,238,255,.16); border-radius:50%; }
-    .orbit::before { inset:14% -8%; transform:rotate(58deg); }
-    .orbit::after { inset:-4% 23%; transform:rotate(-42deg); }
-    .hero-note { position:absolute; right:2%; top:12%; width:210px; padding:17px; border:1px solid var(--line); border-radius:18px; background:rgba(17,19,34,.7); backdrop-filter:blur(16px); box-shadow:var(--shadow); animation:float 6s ease-in-out infinite; }
-    .hero-note .mini { color:var(--muted); font:11px 'DM Mono',monospace; line-height:1.6; }
-    .hero-note strong { display:block; margin-top:10px; font-size:23px; letter-spacing:-.06em; }
-    .hero-note strong span { color:var(--lime); }
-    .hero-core { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:190px; height:190px; border-radius:50%; background:radial-gradient(circle at 36% 28%,#fff 0 2%,var(--lime) 4%,rgba(198,255,63,.6) 18%,rgba(150,114,255,.35) 47%,transparent 69%); filter:blur(.2px); box-shadow:0 0 90px rgba(198,255,63,.28),0 0 180px rgba(150,114,255,.2); animation:pulse 5s ease-in-out infinite; }
-    .hero-label { position:absolute; left:0; bottom:8%; color:var(--muted); font:11px 'DM Mono',monospace; }
-    .hero-label b { color:var(--text); font-weight:400; }
-    section { padding:122px 0; position:relative; }
-    .section-head { display:flex; justify-content:space-between; align-items:end; gap:30px; margin-bottom:45px; }
-    .section-head h2 { max-width:640px; margin-top:18px; font-size:clamp(2.8rem,5vw,5rem); line-height:.95; letter-spacing:-.08em; }
-    .section-head h2 span { color:var(--lime); }
-    .section-intro { max-width:310px; color:var(--muted); font-size:14px; line-height:1.7; }
-    .filter-row { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:28px; }
-    .filter { border:1px solid var(--line); border-radius:999px; padding:9px 14px; cursor:pointer; color:var(--muted); background:transparent; font-size:11px; transition:.2s; }
-    .filter:hover,.filter.active { color:var(--bg); background:var(--lime); border-color:var(--lime); }
-    .projects-grid { display:grid; grid-template-columns:repeat(12,1fr); gap:18px; }
-    .project-card { grid-column:span 6; position:relative; min-height:420px; padding:18px; border:1px solid var(--line); border-radius:24px; background:linear-gradient(145deg,rgba(22,24,42,.92),rgba(11,12,24,.84)); overflow:hidden; transform-style:preserve-3d; transition:border-color .3s,transform .25s,box-shadow .3s; }
-    .project-card:nth-child(3),.project-card:nth-child(4),.project-card:nth-child(5) { grid-column:span 4; min-height:380px; }
-    .project-card:hover { border-color:rgba(198,255,63,.6); box-shadow:0 25px 75px rgba(0,0,0,.32); }
-    .project-art { height:226px; position:relative; border-radius:16px; overflow:hidden; border:1px solid rgba(255,255,255,.08); background:#13152a; }
-    .project-art::before { content:""; position:absolute; inset:0; background:linear-gradient(135deg,var(--art-a),transparent 52%),radial-gradient(circle at 75% 24%,var(--art-b),transparent 34%); opacity:.86; }
-    .project-art::after { content:""; position:absolute; inset:0; background:linear-gradient(180deg,transparent 35%,rgba(6,7,16,.5)); }
-    .art-window { position:absolute; z-index:1; left:10%; right:10%; top:18%; bottom:12%; border:1px solid rgba(255,255,255,.32); border-radius:10px; background:rgba(5,7,17,.36); backdrop-filter:blur(6px); box-shadow:14px 18px 38px rgba(0,0,0,.2); }
-    .art-window::before { content:""; position:absolute; left:14px; right:14px; top:16px; height:5px; border-radius:99px; background:linear-gradient(90deg,var(--art-accent) 0 22%,rgba(255,255,255,.22) 22% 52%,rgba(255,255,255,.1) 52%); }
-    .art-window::after { content:""; position:absolute; left:14px; top:45px; width:55%; height:64%; border-radius:5px; background:repeating-linear-gradient(0deg,rgba(255,255,255,.17) 0 1px,transparent 1px 17px),linear-gradient(135deg,var(--art-accent),transparent); opacity:.8; }
-    .art-orb { position:absolute; z-index:2; width:90px; height:90px; right:17%; top:34%; border-radius:50%; background:radial-gradient(circle at 33% 28%,#fff 0 2%,var(--art-accent) 5%,transparent 55%); box-shadow:0 0 55px var(--art-accent); opacity:.9; }
-    .art-tag { position:absolute; z-index:3; right:14px; bottom:13px; color:rgba(255,255,255,.72); font:10px 'DM Mono',monospace; letter-spacing:.1em; }
-    .art-agro { --art-a:#485f27; --art-b:#e2b868; --art-accent:#e5ff8a; }
-    .art-ibi { --art-a:#5a2d69; --art-b:#eb8b67; --art-accent:#ffb37e; }
-    .art-west { --art-a:#1f5148; --art-b:#b1df72; --art-accent:#c6ff3f; }
-    .art-peer { --art-a:#2a3179; --art-b:#7e8cff; --art-accent:#9ce8ff; }
-    .art-qr { --art-a:#6c422a; --art-b:#a9e48e; --art-accent:#e4ff9b; }
-    .project-info { padding:20px 3px 4px; }
-    .project-meta { display:flex; justify-content:space-between; gap:12px; color:var(--muted); font:10px 'DM Mono',monospace; text-transform:uppercase; letter-spacing:.08em; }
-    .project-info h3 { margin-top:14px; font-size:25px; letter-spacing:-.06em; }
-    .project-info p { max-width:430px; margin-top:8px; color:var(--muted); font-size:13px; line-height:1.6; }
-    .project-footer { display:flex; justify-content:space-between; align-items:center; margin-top:18px; }
-    .tags { display:flex; flex-wrap:wrap; gap:6px; }
-    .tag { padding:5px 8px; border:1px solid var(--line); color:var(--muted); border-radius:99px; font:10px 'DM Mono',monospace; }
-    .view-link { padding:0; border:0; color:var(--lime); background:transparent; cursor:pointer; font-size:12px; font-weight:700; }
-    .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:75px; align-items:start; }
-    .about-lead { font-size:clamp(2rem,3.5vw,3.7rem); line-height:1.02; letter-spacing:-.07em; }
-    .about-lead span { color:var(--lime); }
-    .about-copy { color:var(--muted); font-size:15px; line-height:1.8; }
-    .about-copy p + p { margin-top:18px; }
-    .skill-cloud { display:flex; flex-wrap:wrap; gap:8px; margin-top:25px; }
-    .skill { padding:9px 12px; border-radius:8px; background:rgba(255,255,255,.05); border:1px solid var(--line); color:var(--text); font:11px 'DM Mono',monospace; }
-    .process { margin-top:72px; display:grid; grid-template-columns:repeat(3,1fr); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
-    .process-item { padding:27px 22px 29px 0; border-right:1px solid var(--line); }
-    .process-item + .process-item { padding-left:22px; }
-    .process-item:last-child { border-right:0; }
-    .process-num { color:var(--lime); font:11px 'DM Mono',monospace; }
-    .process h3 { margin-top:26px; font-size:22px; letter-spacing:-.06em; }
-    .process p { margin-top:10px; max-width:260px; color:var(--muted); font-size:13px; line-height:1.6; }
-    .contact { padding-top:105px; padding-bottom:135px; }
-    .contact-box { display:flex; justify-content:space-between; align-items:end; gap:40px; padding:47px; border:1px solid rgba(198,255,63,.28); border-radius:25px; background:radial-gradient(circle at 86% 10%,rgba(198,255,63,.13),transparent 26%),linear-gradient(135deg,rgba(25,30,48,.8),rgba(11,12,24,.7)); }
-    .contact-box h2 { max-width:650px; margin-top:19px; font-size:clamp(2.9rem,5.5vw,5.7rem); line-height:.9; letter-spacing:-.09em; }
-    .contact-box h2 span { color:var(--lime); }
-    .contact-box p { max-width:420px; margin-top:20px; color:var(--muted); font-size:14px; line-height:1.7; }
-    footer { border-top:1px solid var(--line); padding:22px 0 30px; color:var(--muted); font:11px 'DM Mono',monospace; }
-    .footer-inner { display:flex; justify-content:space-between; gap:20px; }
-    .modal { position:fixed; inset:0; z-index:40; display:grid; place-items:center; padding:20px; background:rgba(3,4,10,.78); backdrop-filter:blur(18px); opacity:0; pointer-events:none; transition:.25s; }
-    .modal.open { opacity:1; pointer-events:auto; }
-    .modal-card { width:min(660px,100%); border:1px solid var(--line); border-radius:24px; padding:30px; background:#111322; box-shadow:var(--shadow); transform:translateY(18px); transition:.25s; }
-    .modal.open .modal-card { transform:translateY(0); }
-    .modal-top { display:flex; justify-content:space-between; align-items:start; gap:20px; }
-    .modal-top h3 { margin-top:14px; font-size:35px; letter-spacing:-.07em; }
-    .modal-close { width:36px; height:36px; border:1px solid var(--line); border-radius:50%; background:transparent; color:var(--text); cursor:pointer; }
-    .modal-copy { margin-top:20px; color:var(--muted); line-height:1.75; font-size:14px; }
-    .modal-details { display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin:24px 0; }
-    .detail { padding:13px; border-radius:12px; background:rgba(255,255,255,.04); }
-    .detail small { display:block; color:var(--muted); font:10px 'DM Mono',monospace; text-transform:uppercase; }
-    .detail strong { display:block; margin-top:7px; font-size:13px; }
-    .reveal { opacity:0; transform:translateY(24px); transition:opacity .7s ease,transform .7s ease; }
-    .reveal.visible { opacity:1; transform:none; }
-    @keyframes float { 0%,100%{transform:translateY(0) rotate(3deg)} 50%{transform:translateY(-16px) rotate(-3deg)} }
-    @keyframes pulse { 0%,100%{transform:translate(-50%,-50%) scale(.95)} 50%{transform:translate(-50%,-50%) scale(1.1)} }
-    @media (max-width:850px) { .nav-links { display:none; } .hero { min-height:auto; padding-top:135px; } .hero-grid,.about-grid { grid-template-columns:1fr; } .hero-side { min-height:310px; margin-top:25px; } .section-head { display:block; } .section-intro { margin-top:18px; } .project-card,.project-card:nth-child(3),.project-card:nth-child(4),.project-card:nth-child(5) { grid-column:span 12; } .process { grid-template-columns:1fr; } .process-item,.process-item + .process-item { border-right:0; border-bottom:1px solid var(--line); padding:25px 0; } .process-item:last-child { border-bottom:0; } .contact-box { display:block; padding:30px; } .contact-box .button { margin-top:28px; } }
-    @media (max-width:520px) { .wrap { width:min(100% - 30px,1180px); } h1 { font-size:clamp(3.4rem,17vw,5rem); } section { padding:86px 0; } .project-art { height:200px; } .hero-note { right:-2%; } .footer-inner { display:block; } .footer-inner span + span { display:block; margin-top:8px; } }
-    @media (prefers-reduced-motion:reduce) { *,*::before,*::after { animation-duration:.001ms!important; animation-iteration-count:1!important; scroll-behavior:auto!important; transition-duration:.001ms!important; } }
-  </style>
+  <meta name="theme-color" content="#101210" />
+  <meta name="description" content="Akif Kərimov — məhsul və veb təcrübələri." />
+  <title>Akif Kərimov — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <canvas id="space" aria-hidden="true"></canvas><div class="noise" aria-hidden="true"></div>
-  <header class="site-header" id="header"><div class="wrap nav"><a class="brand" href="#top"><span class="brand-mark">AK</span><span>Akif Kərimov</span></a><nav class="nav-links" aria-label="Əsas naviqasiya"><a href="#work">İşlər</a><a href="#about">Haqqımda</a><a href="#process">Yanaşma</a></nav><a class="nav-cta" href="#contact">Əlaqə <span>↗</span></a></div></header>
+  <div class="ambient" aria-hidden="true">
+    <div class="blob blob-a"></div><div class="blob blob-b"></div><div class="blob blob-c"></div><div class="ambient-grid"></div>
+  </div>
+  <div class="cursor-halo" aria-hidden="true"></div><div class="cursor-dot" aria-hidden="true"></div>
+
+  <header class="site-header" id="header">
+    <div class="wrap nav">
+      <a class="brand magnetic" href="#top"><span class="brand-mark">AK</span><span>Akif Kərimov</span></a>
+      <nav class="nav-links" aria-label="Əsas naviqasiya"><a href="#work">İşlər</a><a href="#about">Haqqımda</a></nav>
+      <a class="nav-cta magnetic" href="#contact">Əlaqə <span>↗</span></a>
+    </div>
+  </header>
+
   <main id="top">
-    <section class="hero"><div class="wrap hero-grid"><div class="reveal"><div class="eyebrow">Digital maker · Bakı</div><h1>İdeyaları <em>işlək</em> təcrübələrə çevirirəm.</h1><p class="hero-copy">Rəqəmsal məhsullar, platformalar və interaktiv veb saytlar qururam — düşünülmüş struktur, aydın interfeys və bir az da xarakterlə.</p><div class="hero-actions"><a class="button button-lime" href="#work">İşlərimə bax <span>↓</span></a><a class="button button-dark" href="#about">Mənim haqqımda <span>↗</span></a></div></div><div class="hero-side reveal"><div class="orbit"></div><div class="hero-core"></div><div class="hero-note"><div class="mini">CURRENT FOCUS / 2026</div><strong>Build things<br><span>worth using.</span></strong></div><div class="hero-label">01 / <b>portfolio refresh</b></div></div></div></section>
-    <section id="work"><div class="wrap"><div class="section-head reveal"><div><div class="eyebrow">Selected work</div><h2>Bir neçə fikir,<br><span>beş canlı dünya.</span></h2></div><p class="section-intro">İnterfeys, məhsul düşüncəsi və texnologiyanın kəsişməsində hazırladığım layihələr.</p></div><div class="filter-row reveal" aria-label="Layihə filtrləri"><button class="filter active" data-filter="all">Hamısı</button><button class="filter" data-filter="product">Məhsul</button><button class="filter" data-filter="platform">Platforma</button><button class="filter" data-filter="ecosystem">Ekosistem</button></div><div class="projects-grid" id="projects-grid"></div></div></section>
-    <section id="about"><div class="wrap"><div class="about-grid"><div class="reveal"><div class="eyebrow">A little context</div><p class="about-lead" style="margin-top:22px">Kod yazıram, amma əsas işim <span>mənanı</span> aydınlaşdırmaqdır.</p></div><div class="about-copy reveal"><p>İnformasiya texnologiyaları tələbəsi və full-stack web developer kimi ideyanı yalnız gözəl görünən səhifəyə yox, istifadə edilə bilən rəqəmsal təcrübəyə çevirməyə fokuslanıram.</p><p>Hazırda məhsul interfeysləri, startap ekosistemləri, aqrar texnologiya və AI ilə kəsişən layihələr üzərində işləyirəm.</p><div class="skill-cloud"><span class="skill">HTML / CSS</span><span class="skill">JavaScript</span><span class="skill">React</span><span class="skill">Node.js</span><span class="skill">Python</span><span class="skill">AWS</span><span class="skill">Product thinking</span><span class="skill">UI systems</span></div></div></div><div class="process" id="process"><div class="process-item reveal"><div class="process-num">01 — FRAME</div><h3>Problemi tuturam.</h3><p>İdeyanın arxasındakı ehtiyacı, istifadəçini və əsas istiqaməti aydınlaşdırıram.</p></div><div class="process-item reveal"><div class="process-num">02 — SHAPE</div><h3>Təcrübəni qururam.</h3><p>Struktur, vizual dil və funksionallıq bir yerdə işləyən axına çevrilir.</p></div><div class="process-item reveal"><div class="process-num">03 — SHIP</div><h3>Canlıya çıxarıram.</h3><p>Detalları cilalayıb işlək, sürətli və baxanda hiss olunan məhsul təqdim edirəm.</p></div></div></div></section>
-    <section class="contact" id="contact"><div class="wrap"><div class="contact-box reveal"><div><div class="eyebrow">Have a good idea?</div><h2>Gəlin növbəti <span>yaxşı işi</span> birlikdə quraq.</h2><p>Yeni məhsul, portfolio və ya sadəcə fikri formaya salmaq üçün mənə yaza bilərsən.</p></div><a class="button button-lime" href="mailto:akifkerimovv@gmail.com">Mənə yaz <span>↗</span></a></div></div></section>
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div class="reveal">
+          <div class="kicker">Portfolio · 2026</div>
+          <h1>Məhsul düşünür, <span>interfeys qururam.</span></h1>
+          <p class="hero-copy">İT tələbəsi və full-stack developer. Fikirləri rahat istifadə olunan veb məhsullara çevirirəm.</p>
+          <div class="hero-actions">
+            <a class="button button-primary magnetic" href="#work">Layihələrə bax <span>↓</span></a>
+            <a class="button button-ghost magnetic" href="https://github.com/ak-uif" target="_blank" rel="noreferrer">GitHub <span>↗</span></a>
+          </div>
+        </div>
+        <div class="hero-visual reveal" aria-label="Layihələrdən görüntülər">
+          <div class="stack-card stack-back glass"><img src="assets/aqroqr.png" alt="AqroQR layihəsi" /></div>
+          <div class="stack-card stack-mid glass"><img src="assets/ibi.png" alt="AzMİU İBİ layihəsi" /></div>
+          <div class="stack-card stack-front glass"><img src="assets/struktur.png" alt="STRUKTUR layihəsi" /></div>
+          <div class="stack-meta glass"><small>Hazır portfolio</small><strong>5 canlı <span>layihə</span></strong></div>
+        </div>
+      </div>
+      <div class="wrap scroll-note">Aşağı sürüşdür</div>
+    </section>
+
+    <section id="work">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div><div class="kicker">Seçilmiş işlər</div><h2>Real layihələr.<br />Real ekranlar.</h2></div>
+          <p class="section-note">Kartın üzərinə kliklə və layihəni canlı aç.</p>
+        </div>
+        <div class="projects-grid">
+          <a class="project-card glass reveal" href="https://struktur-six.vercel.app/" target="_blank" rel="noreferrer">
+            <div class="project-shot"><img src="assets/struktur.png" alt="STRUKTUR saytının ekran görüntüsü" loading="lazy" /><span class="live-pill">Canlı layihə</span><span class="shot-arrow">↗</span></div>
+            <div class="project-info"><div><span class="project-number">01 / AI &amp; INTERIOR</span><h3>STRUKTUR</h3><p>AI ilə interyer vizuallaşdırma və “Gördüyünü Al”.</p></div><span class="project-type">Məhsul</span></div>
+          </a>
+          <a class="project-card glass reveal" href="https://ibi-azmiu.vercel.app/" target="_blank" rel="noreferrer">
+            <div class="project-shot"><img src="assets/ibi.png" alt="AzMİU İBİ saytının ekran görüntüsü" loading="lazy" /><span class="live-pill">Canlı layihə</span><span class="shot-arrow">↗</span></div>
+            <div class="project-info"><div><span class="project-number">02 / ECOSYSTEM</span><h3>AzMİU İBİ</h3><p>Universitet inkubatoru üçün rəqəmsal platforma.</p></div><span class="project-type">Ekosistem</span></div>
+          </a>
+          <a class="project-card glass reveal" href="https://qarabaqhackaton.vercel.app/" target="_blank" rel="noreferrer">
+            <div class="project-shot"><img src="assets/agrowest.png" alt="AgroWest saytının ekran görüntüsü" loading="lazy" /><span class="live-pill">Canlı layihə</span><span class="shot-arrow">↗</span></div>
+            <div class="project-info"><div><span class="project-number">03 / AGRITECH</span><h3>AgroWest</h3><p>Aqrar investisiya və torpaq icarəsi portalı.</p></div><span class="project-type">Platforma</span></div>
+          </a>
+          <a class="project-card glass reveal" href="https://aws-eight-flax.vercel.app/" target="_blank" rel="noreferrer">
+            <div class="project-shot"><img src="assets/peerlearn.png" alt="PeerLearn saytının ekran görüntüsü" loading="lazy" /><span class="live-pill">Canlı layihə</span><span class="shot-arrow">↗</span></div>
+            <div class="project-info"><div><span class="project-number">04 / COMMUNITY</span><h3>PeerLearn</h3><p>Tədbir və öyrənmə icması.</p></div><span class="project-type">Platforma</span></div>
+          </a>
+          <a class="project-card glass reveal" href="https://aqroqr.vercel.app/" target="_blank" rel="noreferrer">
+            <div class="project-shot"><img src="assets/aqroqr.png" alt="AqroQR saytının ekran görüntüsü" loading="lazy" /><span class="live-pill">Canlı layihə</span><span class="shot-arrow">↗</span></div>
+            <div class="project-info"><div><span class="project-number">05 / AGRITOURISM</span><h3>AqroQR</h3><p>Aqroturizm məkanlarını kəşf etmək üçün platforma.</p></div><span class="project-type">Məhsul</span></div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="wrap">
+        <div class="about-panel glass reveal">
+          <div><div class="kicker">Haqqımda</div><h2>Fikirdən işləyən məhsula.</h2></div>
+          <div class="about-copy">
+            <p>Mən Akifəm. İnformasiya Texnologiyaları üzrə təhsil alır, frontend, backend və məhsul interfeysləri üzərində işləyirəm.</p>
+            <p>Ən çox ideyanın ilk prototipdən insanların istifadə edə bildiyi məhsula çevrildiyi hissəni sevirəm.</p>
+            <div class="tool-line"><span>HTML / CSS</span><span>JavaScript</span><span>React</span><span>Node.js</span><span>Python</span><span>AWS</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="wrap">
+        <div class="contact-panel glass reveal">
+          <div><div class="kicker">Əlaqə</div><h2>Bir fikrin var?<br /><span>Danışaq.</span></h2></div>
+          <div class="contact-links">
+            <a class="mail-link magnetic" href="mailto:akifkerimovv@gmail.com">E-mail yaz <span>↗</span></a>
+            <div class="socials"><a class="social-link" href="https://github.com/ak-uif" target="_blank" rel="noreferrer">GitHub</a><a class="social-link" href="https://linkedin.com/in/akif-karimov-a34270383/" target="_blank" rel="noreferrer">LinkedIn</a></div>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
-  <footer><div class="wrap footer-inner"><span>© 2026 Akif Kərimov</span><span>Built with intent · Baku, Azerbaijan</span></div></footer>
-  <div class="modal" id="project-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"><div class="modal-card"><div class="modal-top"><div><div class="eyebrow" id="modal-kicker">Project</div><h3 id="modal-title">Project title</h3></div><button class="modal-close" id="modal-close" aria-label="Bağla">×</button></div><p class="modal-copy" id="modal-copy"></p><div class="modal-details"><div class="detail"><small>Kateqoriya</small><strong id="modal-category"></strong></div><div class="detail"><small>İstiqamət</small><strong id="modal-role"></strong></div></div><a class="button button-lime" id="modal-link" href="#" target="_blank" rel="noreferrer">Canlı layihəyə bax ↗</a></div></div>
-  <script>
-    const projects = [
-      {id:'struktur',title:'STRUKTUR',kicker:'01 / AI + 3D INTERIOR',category:'product',categoryLabel:'Məhsul',role:'Product concept · UI',url:'https://struktur-six.vercel.app/',desc:'Boş otaq şəklini AI dəstəyi ilə 4K dizayna çevirən və “Gördüyünü Al” ideyasını məhsul təcrübəsinə bağlayan interyer platforması.',tags:['AI / 3D','Commerce'],art:'art-agro'},
-      {id:'ibi',title:'AzMİU İBİ',kicker:'02 / INNOVATION ECOSYSTEM',category:'ecosystem',categoryLabel:'Ekosistem',role:'Digital experience · Frontend',url:'https://ibi-azmiu.vercel.app/',desc:'Universitet ideyalarını startaplara bağlayan innovasiya inkubatoru üçün proqramlar, yol xəritəsi, mentorlar və icma axınını bir sistemdə təqdim edən sayt.',tags:['Startup','Institutional'],art:'art-ibi'},
-      {id:'agrowest',title:'AgroWest',kicker:'03 / AGRI INVESTMENT',category:'platform',categoryLabel:'Platforma',role:'Product interface · Frontend',url:'https://qarabaqhackaton.vercel.app/',desc:'Qarabağda torpaq icarəsi və aqrar investisiya imkanlarını vahid rəqəmsal platformada kəşf etməyə yönəlmiş portal prototipi.',tags:['AgriTech','Portal'],art:'art-west'},
-      {id:'peerlearn',title:'PeerLearn',kicker:'04 / COMMUNITY PLATFORM',category:'platform',categoryLabel:'Platforma',role:'UX flow · Frontend',url:'https://aws-eight-flax.vercel.app/',desc:'İT, biznes və dizayn sahələrində tədbirləri, spikerləri və öyrənmə imkanlarını bir icmada birləşdirən tədbir platforması.',tags:['Community','Events'],art:'art-peer'},
-      {id:'aqroqr',title:'AqroQR',kicker:'05 / AGRITOURISM',category:'product',categoryLabel:'Məhsul',role:'Concept · Experience design',url:'https://aqroqr.vercel.app/',desc:'Mövsümə uyğun aqrar məkanları, yerli dadları və təbiət içində səyahət ideyalarını kəşf etməyə kömək edən aqroturizm təcrübəsi.',tags:['Travel','Local'],art:'art-qr'}
-    ];
-    const grid = document.querySelector('#projects-grid');
-    function render(filter='all') { grid.innerHTML = projects.filter(p=>filter==='all'||p.category===filter).map((p,i)=>`<article class="project-card reveal visible" data-id="${p.id}" style="--i:${i}"><div class="project-art ${p.art}"><div class="art-window"></div><div class="art-orb"></div><div class="art-tag">AK / ${String(i+1).padStart(2,'0')}</div></div><div class="project-info"><div class="project-meta"><span>${p.kicker}</span><span>${p.categoryLabel}</span></div><h3>${p.title}</h3><p>${p.desc}</p><div class="project-footer"><div class="tags">${p.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div><button class="view-link" data-open="${p.id}">Detallar ↗</button></div></div></article>`).join('');
-      grid.querySelectorAll('.project-card').forEach(card=>{ card.addEventListener('mousemove',e=>{const r=card.getBoundingClientRect(); card.style.transform=`perspective(900px) rotateX(${((e.clientY-r.top)/r.height-.5)*-4}deg) rotateY(${((e.clientX-r.left)/r.width-.5)*5}deg)`}); card.addEventListener('mouseleave',()=>card.style.transform=''); });
-      grid.querySelectorAll('[data-open]').forEach(btn=>btn.addEventListener('click',()=>openModal(projects.find(p=>p.id===btn.dataset.open))));
-    }
-    const modal=document.querySelector('#project-modal');
-    function openModal(p){document.querySelector('#modal-kicker').textContent=p.kicker;document.querySelector('#modal-title').textContent=p.title;document.querySelector('#modal-copy').textContent=p.desc;document.querySelector('#modal-category').textContent=p.categoryLabel;document.querySelector('#modal-role').textContent=p.role;document.querySelector('#modal-link').href=p.url;modal.classList.add('open');document.body.style.overflow='hidden';}
-    function closeModal(){modal.classList.remove('open');document.body.style.overflow='';}
-    document.querySelector('#modal-close').addEventListener('click',closeModal); modal.addEventListener('click',e=>{if(e.target===modal)closeModal()}); document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
-    document.querySelectorAll('.filter').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('.filter').forEach(b=>b.classList.remove('active'));btn.classList.add('active');render(btn.dataset.filter)})); render();
-    const revealObserver=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.12}); document.querySelectorAll('.reveal').forEach(el=>revealObserver.observe(el));
-    const header=document.querySelector('#header'); addEventListener('scroll',()=>header.classList.toggle('scrolled',scrollY>30),{passive:true});
-    addEventListener('pointermove',e=>{document.body.style.setProperty('--mx',`${e.clientX}px`);document.body.style.setProperty('--my',`${e.clientY}px`)},{passive:true});
-    const canvas=document.querySelector('#space'),ctx=canvas.getContext('2d'); let dots=[]; function resize(){canvas.width=innerWidth*devicePixelRatio;canvas.height=innerHeight*devicePixelRatio;canvas.style.width=innerWidth+'px';canvas.style.height=innerHeight+'px';ctx.scale(devicePixelRatio,devicePixelRatio);dots=Array.from({length:Math.min(90,Math.floor(innerWidth/16))},()=>({x:Math.random()*innerWidth,y:Math.random()*innerHeight,vx:(Math.random()-.5)*.22,vy:(Math.random()-.5)*.22,r:Math.random()*1.4+.25,c:Math.random()>.83?'#c6ff3f':'#77809e'}));} function animate(){ctx.clearRect(0,0,innerWidth,innerHeight);dots.forEach((d,i)=>{d.x+=d.vx;d.y+=d.vy;if(d.x<0||d.x>innerWidth)d.vx*=-1;if(d.y<0||d.y>innerHeight)d.vy*=-1;ctx.beginPath();ctx.fillStyle=d.c;ctx.globalAlpha=.55;ctx.arc(d.x,d.y,d.r,0,Math.PI*2);ctx.fill();for(let j=i+1;j<dots.length;j++){let n=dots[j],dist=Math.hypot(d.x-n.x,d.y-n.y);if(dist<120){ctx.beginPath();ctx.strokeStyle='#616b8c';ctx.globalAlpha=(1-dist/120)*.13;ctx.moveTo(d.x,d.y);ctx.lineTo(n.x,n.y);ctx.stroke();}}});requestAnimationFrame(animate);} addEventListener('resize',resize); resize(); animate();
-  </script>
+
+  <footer><div class="wrap footer-inner"><span>© 2026 Akif Kərimov</span><span>Bakı, Azərbaycan</span></div></footer>
+  <script src="script.js"></script>
 </body>
 </html>
